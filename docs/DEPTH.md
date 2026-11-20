@@ -31,6 +31,10 @@
 | TRAP-11 | 混合偏移 | 落错版本 | UTC归整 | `app/values.py` | `tests/test_m3.py::test_timezone_equal` |
 | TRAP-23 | 换乘截止点 | 重复优惠 | 截止点排除 | `app/modules/m5_discounts/rules.py` | `tests/test_m5.py::test_exact_window_excluded` |
 | TRAP-25 | 票价重叠 | 随意取版 | 冲突隔离 | `app/modules/m3_fares/rules.py` | `tests/test_m3.py::test_overlap_rejected` |
+| TRAP-31 | 接驳返程误减 | 反向同样给优惠 | 方向规则双向/单向可裁决，拒绝落理由 | `app/modules/m5_discounts/rules.py` | `tests/test_m5.py::test_feeder_only_mode_rejects_reverse` |
+| TRAP-32 | 规则切换失败 | 写半截新账 | 回退完整旧版日账且不写库 | `app/pipeline.py` | `tests/test_e2e.py::test_direction_switch_failure_keeps_full_legacy_ledger` |
+| TRAP-33 | 重跑重复占额 | 每跑一笔新账 | (run_id,card,day)唯一约束INSERT OR IGNORE | `app/store.py` | `tests/test_e2e.py::test_rerun_does_not_add_ledger_quota` |
+| TRAP-34 | 未对平封账 | 直接归档 | 跨模块守恒闸口阻断 | `app/modules/m7_settlement/rules.py` | `tests/test_m7.py::test_cross_module_mismatch_blocks_seal` |
 
 ## 对账规则
 
